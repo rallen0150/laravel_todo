@@ -15,7 +15,18 @@ class Task extends Model
         'description',
     ];
 
+    /**
+     * Return all that are finished
+     */
     public function isCompleted() {
         return $this->completed_at !== null;
+    }
+
+    /**
+     * Get the user that owns the task.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

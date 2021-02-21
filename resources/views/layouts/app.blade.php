@@ -24,14 +24,14 @@
                 <span class="menu-icon">
                   <i class="mdi mdi-speedometer"></i>
                 </span>
+                <span>{{ Auth::user()->name }}</span>&emsp;&emsp;
                 <span class="menu-title">Logout</span>
             </a>    
             <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
             </form>
           </li> 
-        @endauth
-        @guest
+        @else
           <li class="nav-item active">
             <a class="nav-link" href="/">Login</a>
           </li>

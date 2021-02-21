@@ -18,13 +18,13 @@
       <div class="form-group">
         <label for="description">Task Description</label>
         <input class="form-control" name="description" />
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create Task</button>
       </div>
     </form>
-  @endauth
-  @guest
+  @else
     <h1>You are not allowed to add a task</h1>
   @endguest
 @endsection

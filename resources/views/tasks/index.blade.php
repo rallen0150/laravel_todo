@@ -28,8 +28,7 @@
         </div>
       @endforeach
       <a href="/tasks/create" class="btn btn-primary btn-lg btn-block">New Task</a>
-    @endauth
-    @guest
+    @else
       <h1>You are not allowed to view the tasks</h1>
     @endguest
   </div>
