@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// either url endpoint will go to the same controller
-Route::get('/', 'App\Http\Controllers\TasksController@index');
-Route::get('/tasks', 'App\Http\Controllers\TasksController@index');
+Route::get('/','App\Http\Controllers\Auth\LoginController@show_login_form')->name('login');
+Route::post('/','App\Http\Controllers\Auth\LoginController@process_login')->name('login');
+Route::get('/register','App\Http\Controllers\Auth\LoginController@show_signup_form')->name('register');
+Route::post('/register','App\Http\Controllers\Auth\LoginController@process_signup');
+Route::post('/logout','App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+// Route::get('/', 'App\Http\Controllers\TasksController@index');
+Route::get('/tasks', 'App\Http\Controllers\TasksController@index')->name('tasks');
 
 Route::get('/tasks/create', 'App\Http\Controllers\TasksController@create');
 
