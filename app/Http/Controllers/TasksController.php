@@ -8,16 +8,11 @@ use Illuminate\Support\Facades\Auth;
 class TasksController extends Controller
 {
     public function index() {
-        // $tasks = Task::orderBy('completed_at')
-        //     ->orderBy('id', 'DESC')
-        //     ->get();
-
-        // paginate the authorized user's tasks with 5 per page
+        // grab the authorized user's tasks and order by oldest created
         $tasks = Auth::user()
             ->tasks()
-            ->orderBy('is_complete')
-            ->orderByDesc('created_at')
-            ->paginate(5);
+            ->orderBy('created_at', 'ASC')
+            ->get();
 
         // return dd($tasks);
 
@@ -31,23 +26,14 @@ class TasksController extends Controller
     }
 
     public function store(Request $request) {
-        // request()->validate([
-        //     'description' => 'required|max:255',
-        // ]);
-
-        // Task::create([
-        //     'description' => request('description'),
-        // ]);
-
-        // validate the given request
         $data = $this->validate($request, [
+            'title' => 'required|max:50',
             'description' => 'required|max:255',
         ]);
 
         // create a new incomplete task with the given title
         Auth::user()->tasks()->create([
-            // 'title' => $data['title'],
-            // 'is_complete' => false,
+            'title' => request('title'),
             'description' => request('description'),
         ]);
 

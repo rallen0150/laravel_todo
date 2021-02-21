@@ -16,6 +16,9 @@
     <form method="POST" action="/tasks">
       @csrf
       <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" size="30">
+        <br><br>
         <label for="description">Task Description</label>
         <input class="form-control" name="description" />
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">

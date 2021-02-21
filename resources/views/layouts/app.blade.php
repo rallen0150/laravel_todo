@@ -3,6 +3,7 @@
   <head>
     <title>Todo App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    @yield('style')
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
